@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin&family=Raleway&family=Roboto+Mono:wght@400;600&display=swap");
+
+body{
+  background-image: url('../img/background.jpg') !important;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+
+:root {
+  --primary-color: #0C0C0C; /* preto primário */
+  --secondary-color: #FDB827; /* branco secundário */
+  --tertiary-color: #21209C; /* blue terciário */
+  --background-color: #F1F1F1; /* blue  claro */
+}
+
+body {
+  font-family: Libre Franklin, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.modal-sheet .modal-dialog {
+  width: 380px;
+  transition: bottom .75s ease-in-out;
+}
+.modal-sheet .modal-footer {
+  padding-bottom: 2rem;
+}
+.small-image {
+  padding: 10px;
+  max-width: 400px;
+  width: 100%;
+}
+
+ .modal-body {
+  background-color: var(--secondary-color);
+}
+.btn{
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+.rodape {
+  margin-top: 50%;
+}
+
+
