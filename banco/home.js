@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
           <!----botão do modal----->
           <div class="col-sm-4 col-12 text-center mt-3 mt-md-0 "> 
-            <button type="button" class="btn btn-exibir primary-text btn-exibir-modal btn-block" data-toggle="modal" data-target="#modalExemplo" data-nome="${nome}" data-email="${data.email}" data-telefone="${data.telefone}" data-cidade="${data.cidade}" data-bairro="${data.bairro}" data-curso="${data.curso}" data-ingresso="${data.ingresso}" data-semestre="${data.semestre}" data-conheceu="${data.conheceu}" data-termo="${data.customCheck1}" data-observacao="${data.Observacao}">
+            <button type="button" class="btn btn-exibir primary-text btn-exibir-modal btn-block" data-toggle="modal" data-target="#modalExemplo" data-nome="${nome}" data-email="${data.email}" data-telefone="${data.telefone}" data-cidade="${data.cidade}" data-bairro="${data.bairro}" data-curso="${data.curso}" data-ingresso="${data.ingresso}" data-semestre="${data.semestre}" data-conheceu="${data.conheceu}" data-termo="${data.customCheck1}" data-observacao="${data.Observacoes}">
               Exibir 
             </button>
           </div>
@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
           var modalSemestre = document.querySelector('#semestre');
           var modalConheceu = document.querySelector('#evento');
           var modalcustomCheck1 = document.querySelector('#customCheck1');
-          var modalObservacao = document.querySelector('#Observacao');
+          var modalObservacoes = document.querySelector('#Observacoes');
 
           modalNome.textContent = event.target.dataset.nome;
           modalEmail.textContent = event.target.dataset.email;
@@ -184,8 +184,8 @@ document.addEventListener("DOMContentLoaded", function () {
           modalIngresso.textContent = event.target.dataset.ingresso;
           modalSemestre.textContent = event.target.dataset.semestre;
           modalConheceu.textContent = event.target.dataset.conheceu;
-          modalTermo.textContent = event.target.dataset.customCheck1;
-          modalObservacao.textContent = event.target.dataset.Observacao;
+          modalcustomCheck1.textContent = event.target.dataset.customCheck1;
+          modalObservacoes.textContent = event.target.dataset.Observacoes;
       }
   });
 });

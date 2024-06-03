@@ -72,22 +72,24 @@
                             <h4 class="text-right">Perfil</h4>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">Name</label><p class="" placeholder="first name" id="firstName">SILVA</p></div>
-                            <div class="col-md-6"><label class="labels">Surname</label><p class="" placeholder="first name" id="lastName">SILVA</p></div>
+                            <div class="col-md-6"><label class="labels">Nome</label><p class="" placeholder="primeiro nome" id="primeiroNome"></p></div>
+                            <div class="col-md-6"><label class="labels">Sobrenome</label><p class="" placeholder="sobrenome" id="sobrenome"></p></div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" id="mobileNumber"></div>
-                            <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" id="addressLine1"></div>
-                            <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" id="addressLine2"></div>
-                            <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter postcode" id="postcode"></div>
-                            <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="enter state" id="state"></div>
-                            <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter area" id="area"></div>
-                            <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" id="email"></div>
-                            <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" id="education"></div>
+                            <div class="col-md-12"><label class="labels">Número de Celular</label><p class="" placeholder="insira o número de celular" id="numeroCelular"></p></div>
+                            <div class="col-md-12"><label class="labels">Endereço Linha 1</label><p class="" placeholder="insira a linha de endereço 1" id="linhaEndereco1"></p></div>
+                            <div class="col-md-12"><label class="labels">Endereço Linha 2</label><p class="" placeholder="insira a linha de endereço 2" id="linhaEndereco2"></p></div>
+                            <div class="col-md-12"><label class="labels">Código Postal</label><p class="" placeholder="insira o código postal" id="codigoPostal"></p></div>
+                            <div class="col-md-12"><label class="labels">Estado</label><p class="" placeholder="insira o estado" id="estado"></p></div>
+                            <div class="col-md-12"><label class="labels">Área</label><p class="" placeholder="insira a área" id="area"></p></div>
+                            <div class="col-md-12"><label class="labels">E-mail</label><p class="" placeholder="insira o e-mail" id="email"></p></div>
+                            <div class="col-md-12"><label class="labels">Educação</label><p class="" id="educacao"></p></div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" id="country"></div>
-                            <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" placeholder="state/region" id="stateRegion"></div>
+                            <div class="col-md-6"><label class="labels">País</label><p class="" placeholder="país" id="pais"></p></div>
+                            <div class="col-md-6"><label class="labels">Estado/Região</label><p class="" placeholder="estado/região" id="estadoRegiao"></p></div>
+                        </div>
+                        
                         </div>
                         <div class="mt-5 text-center">
                             <button class="btn btn-primary profile-button" onclick="salvarPerfil()">Salvar Perfil</button>
@@ -117,51 +119,51 @@
     <script>
         // Função para preencher campos com dados do Firebase
         function preencherCampos(perfil) {
-            document.getElementById('firstName').textContent = perfil.firstName;
-            document.getElementById('lastName').textContent = perfil.lastName;
-            document.getElementById('mobileNumber').value = perfil.mobileNumber;
-            document.getElementById('addressLine1').value = perfil.addressLine1;
-            document.getElementById('addressLine2').value = perfil.addressLine2;
-            document.getElementById('postcode').value = perfil.postcode;
-            document.getElementById('state').value = perfil.state;
+            document.getElementById('primeiroNome').textContent = perfil.firstName;
+            document.getElementById('sobrenome').textContent = perfil.lastName;
+            document.getElementById('numeroCelular').value = perfil.mobileNumber;
+            document.getElementById('linhaEndereco1').value = perfil.addressLine1;
+            document.getElementById('linhaEndereco2').value = perfil.addressLine2;
+            document.getElementById('codigoPostal').value = perfil.postcode;
+            document.getElementById('estado').value = perfil.state;
             document.getElementById('area').value = perfil.area;
             document.getElementById('email').value = perfil.email;
-            document.getElementById('education').value = perfil.education;
-            document.getElementById('country').value = perfil.country;
-            document.getElementById('stateRegion').value = perfil.stateRegion;
+            document.getElementById('educacao').value = perfil.education;
+            document.getElementById('pais').value = perfil.country;
+            document.getElementById('estadoRegiao').value = perfil.stateRegion;
         }
-
+    
         // Função para salvar perfil no Firebase
         function salvarPerfil() {
-            var firstName = document.getElementById('firstName').textContent;
-            var lastName = document.getElementById('lastName').textContent;
-            var mobileNumber = document.getElementById('mobileNumber').value;
-            var addressLine1 = document.getElementById('addressLine1').value;
-            var addressLine2 = document.getElementById('addressLine2').value;
-            var postcode = document.getElementById('postcode').value;
-            var state = document.getElementById('state').value;
+            var primeiroNome = document.getElementById('primeiroNome').textContent;
+            var sobrenome = document.getElementById('sobrenome').textContent;
+            var numeroCelular = document.getElementById('numeroCelular').value;
+            var linhaEndereco1 = document.getElementById('linhaEndereco1').value;
+            var linhaEndereco2 = document.getElementById('linhaEndereco2').value;
+            var codigoPostal = document.getElementById('codigoPostal').value;
+            var estado = document.getElementById('estado').value;
             var area = document.getElementById('area').value;
             var email = document.getElementById('email').value;
-            var education = document.getElementById('education').value;
-            var country = document.getElementById('country').value;
-            var stateRegion = document.getElementById('stateRegion').value;
-
+            var educacao = document.getElementById('educacao').value;
+            var pais = document.getElementById('pais').value;
+            var estadoRegiao = document.getElementById('estadoRegiao').value;
+    
             // Objeto com os dados do perfil
             var perfil = {
-                firstName: firstName,
-                lastName: lastName,
-                mobileNumber: mobileNumber,
-                addressLine1: addressLine1,
-                addressLine2: addressLine2,
-                postcode: postcode,
-                state: state,
+                firstName: primeiroNome,
+                lastName: sobrenome,
+                mobileNumber: numeroCelular,
+                addressLine1: linhaEndereco1,
+                addressLine2: linhaEndereco2,
+                postcode: codigoPostal,
+                state: estado,
                 area: area,
                 email: email,
-                education: education,
-                country: country,
-                stateRegion: stateRegion
+                education: educacao,
+                country: pais,
+                stateRegion: estadoRegiao
             };
-
+    
             // Enviar perfil para o Firebase
             firebase.database().ref('perfis').push(perfil)
                 .then(function () {
@@ -172,12 +174,12 @@
                     alert("Erro ao salvar perfil. Por favor, tente novamente.");
                 });
         }
-
+    
         // Recuperar dados do Firebase quando a página é carregada
         window.onload = function () {
             // Referência ao nó 'perfis' no Firebase
             var perfisRef = firebase.database().ref('perfis');
-
+    
             // Recuperar dados do Firebase
             perfisRef.once('value')
                 .then(function (snapshot) {
@@ -185,7 +187,7 @@
                     if (snapshot.exists()) {
                         // Recuperar o primeiro perfil (apenas para este exemplo)
                         var perfil = snapshot.val()[Object.keys(snapshot.val())[0]];
-
+    
                         // Preencher os campos com os dados do perfil
                         preencherCampos(perfil);
                     }
@@ -194,6 +196,8 @@
                     console.error("Erro ao recuperar dados do Firebase:", error.message);
                 });
         };
+    </script>
+    
     </script>
 </body>
 </html>
