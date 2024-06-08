@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
     <title>Administrador</title>
-    
+
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/user.css" />
     <link rel="stylesheet" href="../css/menu-geral.css">
@@ -24,14 +24,11 @@
 </head>
 
 <body>
-
-    <header class="main-header ">
-
-        <!---- inicio container---->
-        <div class="container ">
+    <header class="main-header">
+        <div class="container">
           <nav class="navbar navbar-expand-lg main-nav px-0">
             <a class="navbar-brand" href="./Home.html">
-                <img class="logo" src="../img/leadboost logo.png" alt=""> <!--- link para algum parte do site--->
+                <img class="logo" src="../img/leadboost logo.png" alt="Logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="icon-bar icon-bar-1"></span>
@@ -40,31 +37,24 @@
             </button>
             <div class="collapse navbar-collapse" id="mainMenu">
               <ul class="navbar-nav ml-auto text-uppercase f1">
-                <li>
-                  <a href="../page/Home.html">Inicio</a>
-                </li>
-                <li>
-                  <a href="../page/funcionarios.html">Funcionarios</a>
-                </li>
-                <li>
-                  <a href="../page/administrador.html" class="active active-first">Perfil</a>
-                </li>
-                <li>
-                  <a href="../index.html">Sair</a>
-                </li>
+                <li><a href="../page/Home.html">Inicio</a></li>
+                <li><a href="../page/funcionarios.html">Funcionarios</a></li>
+                <li><a href="../page/administrador.html" class="active active-first">Perfil</a></li>
+                <li><a href="../index.html">Sair</a></li>
               </ul>
             </div>
           </nav>
         </div>
-       
     </header>
     <main class="mt-5">
-
-        <!------------ perfil para ser editado para receber as informações------------->
-        <div class="container rounded bg-white mt-5 mb-5">
+        <div class="container rounded bg-white mt-2 mb-5">
             <div class="row">
                 <div class="col-md-3 border-right">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="Profile Picture">
+                        <span class="font-weight-bold">ADMIN</span>
+                        <span class="text-black-50">CEO</span>
+                    </div>
                 </div>
                 <div class="col-md-5 border-right">
                     <div class="p-3 py-5">
@@ -72,31 +62,29 @@
                             <h4 class="text-right">Perfil</h4>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">Nome</label><p class="" placeholder="primeiro nome" id="primeiroNome"></p></div>
-                            <div class="col-md-6"><label class="labels">Sobrenome</label><p class="" placeholder="sobrenome" id="sobrenome"></p></div>
+                            <div class="col-md-6"><label class="labels">Nome</label><input type="text" id="primeiroNome" class="form-control"></div>
+                            <div class="col-md-6"><label class="labels">Sobrenome</label><input type="text" id="sobrenome" class="form-control"></div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Número de Celular</label><p class="" placeholder="insira o número de celular" id="numeroCelular"></p></div>
-                            <div class="col-md-12"><label class="labels">Endereço Linha 1</label><p class="" placeholder="insira a linha de endereço 1" id="linhaEndereco1"></p></div>
-                            <div class="col-md-12"><label class="labels">Endereço Linha 2</label><p class="" placeholder="insira a linha de endereço 2" id="linhaEndereco2"></p></div>
-                            <div class="col-md-12"><label class="labels">Código Postal</label><p class="" placeholder="insira o código postal" id="codigoPostal"></p></div>
-                            <div class="col-md-12"><label class="labels">Estado</label><p class="" placeholder="insira o estado" id="estado"></p></div>
-                            <div class="col-md-12"><label class="labels">Área</label><p class="" placeholder="insira a área" id="area"></p></div>
-                            <div class="col-md-12"><label class="labels">E-mail</label><p class="" placeholder="insira o e-mail" id="email"></p></div>
-                            <div class="col-md-12"><label class="labels">Educação</label><p class="" id="educacao"></p></div>
+                            <div class="col-md-12"><label class="labels">Número de Celular</label><input type="text" id="numeroCelular" class="form-control"></div>
+                            <div class="col-md-12"><label class="labels">Endereço Linha 1</label><input type="text" id="linhaEndereco1" class="form-control"></div>
+                            <div class="col-md-12"><label class="labels">Endereço Linha 2</label><input type="text" id="linhaEndereco2" class="form-control"></div>
+                            <div class="col-md-12"><label class="labels">Código Postal</label><input type="text" id="codigoPostal" class="form-control"></div>
+                            <div class="col-md-12"><label class="labels">Estado</label><input type="text" id="estado" class="form-control"></div>
+                            <div class="col-md-12"><label class="labels">Área</label><input type="text" id="area" class="form-control"></div>
+                            <div class="col-md-12"><label class="labels">E-mail</label><input type="text" id="email" class="form-control"></div>
+                            <div class="col-md-12"><label class="labels">Educação</label><input type="text" id="educacao" class="form-control"></div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-6"><label class="labels">País</label><p class="" placeholder="país" id="pais"></p></div>
-                            <div class="col-md-6"><label class="labels">Estado/Região</label><p class="" placeholder="estado/região" id="estadoRegiao"></p></div>
-                        </div>
-                        
+                            <div class="col-md-6"><label class="labels">País</label><input type="text" id="pais" class="form-control"></div>
+                            <div class="col-md-6"><label class="labels">Estado/Região</label><input type="text" id="estadoRegiao" class="form-control"></div>
                         </div>
                         <div class="mt-5 text-center">
                             <button class="btn btn-primary profile-button" onclick="salvarPerfil()">Salvar Perfil</button>
+                            <button class="btn btn-secondary profile-button" onclick="habilitarEdicao()">Editar Perfil</button>
                         </div>
                     </div>
                 </div>
-            
             </div>
         </div>
     </main>
@@ -104,23 +92,20 @@
     <div class="container rodape">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
           <p class="col-md-4 mb-0 text-body-secondary">&copy; www.teamBoost.com.br</p>
-      
           <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
           </a>
-      
           <ul class="nav col-md-4 justify-content-end">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><p>Suporte: Leadboost.team@gmail.com</p></a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"> <p>Contato: 81 9999-6666</p></a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Suporte: Leadboost.team@gmail.com</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contato: 81 9999-6666</a></li>
           </ul>
         </footer>
     </div>
 
     <script>
-        // Função para preencher campos com dados do Firebase
         function preencherCampos(perfil) {
-            document.getElementById('primeiroNome').textContent = perfil.firstName;
-            document.getElementById('sobrenome').textContent = perfil.lastName;
+            document.getElementById('primeiroNome').value = perfil.firstName;
+            document.getElementById('sobrenome').value = perfil.lastName;
             document.getElementById('numeroCelular').value = perfil.mobileNumber;
             document.getElementById('linhaEndereco1').value = perfil.addressLine1;
             document.getElementById('linhaEndereco2').value = perfil.addressLine2;
@@ -132,72 +117,54 @@
             document.getElementById('pais').value = perfil.country;
             document.getElementById('estadoRegiao').value = perfil.stateRegion;
         }
-    
-        // Função para salvar perfil no Firebase
+
         function salvarPerfil() {
-            var primeiroNome = document.getElementById('primeiroNome').textContent;
-            var sobrenome = document.getElementById('sobrenome').textContent;
-            var numeroCelular = document.getElementById('numeroCelular').value;
-            var linhaEndereco1 = document.getElementById('linhaEndereco1').value;
-            var linhaEndereco2 = document.getElementById('linhaEndereco2').value;
-            var codigoPostal = document.getElementById('codigoPostal').value;
-            var estado = document.getElementById('estado').value;
-            var area = document.getElementById('area').value;
-            var email = document.getElementById('email').value;
-            var educacao = document.getElementById('educacao').value;
-            var pais = document.getElementById('pais').value;
-            var estadoRegiao = document.getElementById('estadoRegiao').value;
-    
-            // Objeto com os dados do perfil
-            var perfil = {
-                firstName: primeiroNome,
-                lastName: sobrenome,
-                mobileNumber: numeroCelular,
-                addressLine1: linhaEndereco1,
-                addressLine2: linhaEndereco2,
-                postcode: codigoPostal,
-                state: estado,
-                area: area,
-                email: email,
-                education: educacao,
-                country: pais,
-                stateRegion: estadoRegiao
-            };
-    
-            // Enviar perfil para o Firebase
-            firebase.database().ref('perfis').push(perfil)
-                .then(function () {
-                    alert("Perfil salvo com sucesso!");
-                })
-                .catch(function (error) {
-                    console.error("Erro ao salvar perfil:", error.message);
-                    alert("Erro ao salvar perfil. Por favor, tente novamente.");
-                });
+    var perfil = {
+        firstName: document.getElementById('primeiroNome').value,
+        lastName: document.getElementById('sobrenome').value,
+        mobileNumber: document.getElementById('numeroCelular').value,
+        addressLine1: document.getElementById('linhaEndereco1').value,
+        addressLine2: document.getElementById('linhaEndereco2').value,
+        postcode: document.getElementById('codigoPostal').value,
+        state: document.getElementById('estado').value,
+        area: document.getElementById('area').value,
+        email: document.getElementById('email').value,
+        education: document.getElementById('educacao').value,
+        country: document.getElementById('pais').value,
+        stateRegion: document.getElementById('estadoRegiao').value
+    };
+
+    firebase.database().ref('perfis').child('perfilID').set(perfil)
+        .then(function () {
+            alert("Perfil atualizado com sucesso!");
+        })
+        .catch(function (error) {
+            console.error("Erro ao salvar perfil:", error.message);
+            alert("Erro ao salvar perfil. Por favor, tente novamente.");
+        });
+}
+
+
+        function habilitarEdicao() {
+            var inputs = document.querySelectorAll('input');
+            inputs.forEach(input => input.removeAttribute('disabled'));
         }
-    
-        // Recuperar dados do Firebase quando a página é carregada
+
         window.onload = function () {
-            // Referência ao nó 'perfis' no Firebase
             var perfisRef = firebase.database().ref('perfis');
-    
-            // Recuperar dados do Firebase
             perfisRef.once('value')
                 .then(function (snapshot) {
-                    // Verificar se existem dados
-                    if (snapshot.exists()) {
-                        // Recuperar o primeiro perfil (apenas para este exemplo)
-                        var perfil = snapshot.val()[Object.keys(snapshot.val())[0]];
-    
-                        // Preencher os campos com os dados do perfil
-                        preencherCampos(perfil);
-                    }
+                    var perfis = snapshot.val();
+                    var perfil = Object.values(perfis)[0];
+                    preencherCampos(perfil);
+                    var inputs = document.querySelectorAll('input');
+                    inputs.forEach(input => input.setAttribute('disabled', 'true'));
                 })
                 .catch(function (error) {
-                    console.error("Erro ao recuperar dados do Firebase:", error.message);
+                    console.error("Erro ao carregar perfil:", error.message);
+                    alert("Erro ao carregar perfil. Por favor, tente novamente.");
                 });
         };
-    </script>
-    
     </script>
 </body>
 </html>

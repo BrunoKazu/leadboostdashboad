@@ -1,16 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* <uniquifier>: Use a unique and descriptive class name//
-// <weight>: Use a value from 100 to 900*/
-
 .montserrat-uniquifier {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight: weight;
+  font-weight: var(--weight);
   font-style: normal;
 }
 
- body {
+body {
   background: var(--background-color) !important;
 }
 
@@ -21,17 +18,17 @@
   --background-color: #F1F1F1; /* blue  claro */
 }
 
-.primary-text{
+.primary-text {
   color: var(--primary-color);
 }
-.secondary-text{
+
+.secondary-text {
   color: var(--secondary-color);
 }
+
 .tertiary-text {
   color: var(--tertiary-color);
 }
-
-
 
 /* inicio headr */
 [data-target="#mainMenu"] {
@@ -66,27 +63,15 @@
   background: var(--secondary-color);
   bottom: -6px;
   left: 0;
-
-  -webkit-transform: scale(0, 1);
-  -ms-transform: scale(0, 1);
   transform: scale(0, 1);
-  -webkit-transform-origin: right center;
-  -ms-transform-origin: right center;
   transform-origin: right center;
   z-index: -1;
-
-  -webkit-transition: transform 0.5s ease;
   transition: transform 0.5s ease;
-  
 }
 
 #mainMenu li > a:hover::before,
 #mainMenu li > a.active::before {
-  -webkit-transform: scale(1, 1);
-  -ms-transform: scale(1, 1);
   transform: scale(1, 1);
-  -webkit-transform-origin: left center;
-  -ms-transform-origin: left center;
   transform-origin: left center;
 }
 
@@ -100,16 +85,13 @@
   left: 0;
   z-index: 1000;
   width: 100%;
-  -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
 
 .main-header.fixed-nav {
   top: 0;
   background: #fff;
-  -webkit-box-shadow: 0 8px 12px -8px rgba(0, 0, 0, 0.09);
   box-shadow: 0 8px 12px -8px rgba(0, 0, 0, 0.09);
-  -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
 
@@ -120,13 +102,16 @@
 .main-header.fixed-nav .navbar-brand > img:first-of-type {
   display: none;
 }
+
 .navbar-brand {
   color: #fff;
 }
+
 .main-header .navbar-brand img {
   max-width: 150px;
   animation: fadeInLeft 0.4s both 0.4s;
 }
+
 /* main-header end */
 @media (max-width: 911px) {
   /*header starts*/
@@ -167,7 +152,6 @@
     border-radius: 0px;
   }
 
-  /**/
   .main-header .navbar-toggler .icon-bar {
     background-color: #fff;
     margin: 0 auto 6px;
@@ -176,7 +160,6 @@
     height: 3px;
     position: absolute;
     right: 0;
-    -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
   }
 
@@ -228,7 +211,7 @@
   /*final do header*/
 }
 
- .rodape {
+.rodape {
   margin-top: 50%;
 }
 
@@ -243,14 +226,15 @@
   border: none;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  box-shadow: 1px 8px 5px  rgb(101, 101, 101);
-  
+  box-shadow: 1px 8px 5px rgb(101, 101, 101);
 }
-.card-header{
+
+.card-header {
   background-color: var(--secondary-color);
   color: var(--primary-color);
 }
-.card-body{
+
+.card-body {
   margin-bottom: 20px !important;
 }
 
@@ -266,24 +250,15 @@
   outline: none;
   box-shadow: none;
   border: none;
-  
-}
-.btn-section:hover {
-  background-color: transparent; /* Defina a cor de fundo como transparente */
-  color: var(--secondary-color); /* Pode ser necessário definir a cor do texto para que ela não fique azul */
-  text-decoration: none; /* Remover sublinhado se estiver presente */
 }
 
-.btn-mais{
+.btn-section:hover {
+  background-color: transparent;
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.btn-mais {
   cursor: pointer;
   background-color: var(--secondary-color);
 }
-
-
-
-
-
-
-
-
-

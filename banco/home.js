@@ -189,3 +189,51 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   });
 });
+
+
+function exportToExcel() {
+  var cardsData = []; // Array para armazenar os dados dos cards
+
+  // Iterar sobre os cards visíveis e coletar seus dados
+  var cards = document.querySelectorAll('.card');
+  cards.forEach(function(card) {
+      var cardData = {
+          nome: card.querySelector('.card-title').textContent.trim(),
+          email: card.dataset.email.trim(),
+          telefone: card.dataset.telefone.trim(),
+          cidade: card.dataset.cidade.trim(),
+          bairro: card.dataset.bairro.trim(),
+          curso: card.dataset.curso.trim(),
+          ingresso: card.dataset.ingresso.trim(),
+          semestre: card.dataset.semestre.trim(),
+          conheceu: card.dataset.conheceu.trim(),
+          customCheck1: card.dataset.customCheck1.trim(),
+          Observacoes: card.dataset.observacoes.trim()
+      };
+      cardsData.push(cardData);
+  });
+
+  // Crie uma matriz para armazenar os dados a serem exportados
+  var data = [];
+
+  // Adicione os nomes das colunas como a primeira linha
+  var headers = Object.keys(cardsData[0]);
+  data.push(headers);
+
+  // Adicione os dados dos cards à matriz de dados
+  cardsData.forEach(function(cardData) {
+      var rowData = [];
+      headers.forEach(function(header) {
+          rowData.push(cardData[header]);
+      });
+      data.push(rowData);
+  });
+
+  // Crie uma planilha Excel
+  var ws = XLSX.utils.aoa_to_sheet(data);
+  var wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Planilha");
+
+  // Salve o arquivo Excel
+  XLSX.writeFile(wb, "dados_cards.xlsx");
+}
