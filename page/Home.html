@@ -99,50 +99,50 @@
               <h4 class="m-b-20 p-b-5 b-b-default f-w-600">Informações do candidato</h4>
               <div class="row">
                 <div class="col-sm-6">
-                  <h6 class="m-b-10 f-w-600 ">NOME</h6>
+                  <h5 class="m-b-10 f-w-600 ">NOME</h5>
                   <h6 class="text-muted f-w-400" id="nome"></h6>
               </div>
                   <div class="col-sm-6">
-                      <h6 class="m-b-10 f-w-600">E-MAIL</h6>
+                      <h5 class="m-b-10 f-w-600">E-MAIL</h5>
                       <h6 class="text-muted f-w-400" id="email"></h6>
                   </div>
                   <div class="col-sm-6">
-                      <h6 class="m-b-10 f-w-600">TELEFONE</h6>
+                      <h5 class="m-b-10 f-w-600">TELEFONE</h5>
                       <h6 class="text-muted f-w-400" id="telefone"></h6>
                   </div>
                   <div class="col-sm-6">
-                    <h6 class="m-b-10 f-w-600">Cidade</h6>
+                    <h5 class="m-b-10 f-w-600">Cidade</h5>
                     <h6 class="text-muted f-w-400" id="cidade"></h6>
                 </div>
                 <div class="col-sm-6">
-                  <h6 class="m-b-10 f-w-600">Bairro</h6>
+                  <h5 class="m-b-10 f-w-600">Bairro</h5>
                   <h6 class="text-muted f-w-400" id="bairro"></h6>
               </div>
               </div>
-              <h4 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Interesses</h4>
+              <h5 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Interesses</h5>
               <div class="row">
                   <div class="col-sm-6">
-                      <h6 class="m-b-10 f-w-600">Curso</h6>
+                      <h5 class="m-b-10 f-w-600">Curso</h5>
                       <h6 class="text-muted f-w-400" id="curso"></h6>
                   </div>
                   <div class="col-sm-6">
-                      <h6 class="m-b-10 f-w-600">Forma de ingresso?</h6>
+                      <h5 class="m-b-10 f-w-600">Forma de ingresso?</h5>
                       <h6 class="text-muted f-w-400" id="ingresso"></h6>
                   </div>
                   <div class="col-sm-6">
-                    <h6 class="m-b-10 f-w-600">Semestre</h6>
+                    <h5 class="m-b-10 f-w-600">Semestre</h5>
                     <h6 class="text-muted f-w-400" id="semestre"></h6>
                   </div>
                   <div class="col-sm-6">
-                    <h6 class="m-b-10 f-w-600">Como nos conheceu?</h6>
+                    <h5 class="m-b-10 f-w-600">Como nos conheceu?</h5>
                     <h6 class="text-muted f-w-400" id="evento"></h6>
                   </div>
                   <div class="col-sm-6">
-                    <h6 class="m-b-10 f-w-600">Termo aceito?</h6>
+                    <h5 class="m-b-10 f-w-600">Termo aceito?</h5>
                     <h6 class="text-muted f-w-400" id="customCheck1"></h6>
                   </div>
                   <div class="col-sm-6">
-                    <h6 class="m-b-10 f-w-600">Observação candidato</h6>
+                    <h5 class="m-b-10 f-w-600">Observação candidato</h5>
                     <h6 class="text-muted f-w-400" id="Observacoes"></h6>
                 </div>
               </div>
@@ -158,8 +158,11 @@
 <!-------- fim da referencia------------->
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-editar" onclick="editar()">Editar</button>
+        <button type="button" class="btn btn-success btn-salvar" onclick="salvar()" style="display: none;">Salvar</button>
+        
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        <button type="button" class="btn btn-primary btn-salvar-mudancas">Salvar mudanças</button>
       </div>
     </div>
   </div>
