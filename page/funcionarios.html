@@ -1,256 +1,244 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
+    <title>Home</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/menu-geral.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
-  <title>Home</title>
-  <link rel="stylesheet" href="../css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../css/menu-geral.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-</head>
-
-
-<body>
-<!---- menu navbar---->
-  <header class="main-header ">
-
-    <!---- inicio container---->
-    <div class="container ">
-      <nav class="navbar navbar-expand-lg main-nav px-0">
-        <a class="navbar-brand" href="./Home.html">
-					      <img class="logo" src="../img/leadboost logo.png" alt=""> <!--- link para algum parte do site--->
-					    </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="icon-bar icon-bar-1"></span>
-                        <span class="icon-bar icon-bar-2"></span>
-                        <span class="icon-bar icon-bar-3"></span>
-                    </button>
-        <div class="collapse navbar-collapse" id="mainMenu">
-          <ul class="navbar-nav ml-auto text-uppercase f1">
-            <li>
-              <a href="../page/Home.html" >Inicio</a>
-            </li>
-            <li>
-              <a href="../page/funcionarios.html" class="active active-first">Funcionarios</a>
-            </li>
-            <li>
-              <a href="../page/administrador.html">Perfil</a>
-            </li>
-            <li>
-              <a href="../index.html">Sair</a>
-            </li>
-           
-          </ul>
-        </div>
-      </nav>
-    </div>
-   
-  </header>
-  <!---- fim menu navbar---->
+  <body>
+    <!-- menu navbar -->
+    <header class="main-header">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg main-nav px-0">
+          <a class="navbar-brand" href="./Home.html">
+            <img class="logo" src="../img/leadboost logo.png" alt="" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#mainMenu"
+            aria-controls="mainMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="icon-bar icon-bar-1"></span>
+            <span class="icon-bar icon-bar-2"></span>
+            <span class="icon-bar icon-bar-3"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainMenu">
+            <ul class="navbar-nav ml-auto text-uppercase f1">
+              <li><a href="../page/Home.html">Inicio</a></li>
+              <li>
+                <a href="../page/funcionarios.html" class="active active-first"
+                  >Funcionarios</a
+                >
+              </li>
+              <li><a href="../page/administrador.html">Perfil</a></li>
+              <li><a href="../index.html">Sair</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- fim menu navbar -->
 
     <main class="container pt-5 mt-5">
-      
-    
-<!-- AVISO NÃO MECHER  aqui é os card dos leads-->
-      <div class="container ">
-        <div  class="row my-2" id="cards-funcionario">
-          <!------card-container javascript--------->
+      <div class="container">
+        <h2>Funcionários</h2>
+        <div class="mb-4">
+          <h4>Cadastrar Novo Funcionário</h4>
+          <form id="formCadastrarFuncionario">
+            <div class="form-group">
+              <label for="nomeCadastro">Nome:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nomeCadastro"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="telefoneCadastro">Telefone:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="telefoneCadastro"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="cpfCadastro">CPF:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cpfCadastro"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="senhaCadastro">Senha:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="senhaCadastro"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+          </form>
         </div>
-        <div class="col-12 text-center">
-          <button class="btn-mais btn btn-sm">Ver mais</button>
+        <div class="table-responsive">
+          <table class="table table-striped" id="example">
+            <thead>
+              <tr>
+                <th>Nome do Funcionário</th>
+                <th>Telefone</th>
+                <th>CPF</th>
+                <th>Senha</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Os dados dos funcionários serão inseridos aqui dinamicamente -->
+            </tbody>
+          </table>
         </div>
-      </div> 
-<!-- AVISO NÃO MECHER  aqui é os card dos leads-->
+      </div>
     </main>
 
-<!-- Modal -->
-<div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Lead</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       <!------- modal tem que aparecer aqui dentro
-        confere o javascript---------->
-<!--- confere a referencia pro modal em baixo------>
-<!---------- inicio----------->
-
-  <div class="row m-l-0 m-r-0">
-      <div class="col-sm-8">
-          <div class="card-block">
-              <h5 class="m-b-20 p-b-5 b-b-default f-w-600">Informações do candidato</h5>
-              <div class="row">
-                <div class="col-sm-6">
-                  <p class="m-b-10 f-w-600">Nome</p>
-                  <h6 class="text-muted f-w-400">Nome exemplo</h6>
-              </div>
-                  <div class="col-sm-6">
-                      <p class="m-b-10 f-w-600">E-mail</p>
-                      <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
-                  </div>
-                  <div class="col-sm-6">
-                      <p class="m-b-10 f-w-600">Telefone</p>
-                      <h6 class="text-muted f-w-400">DDD 0000-0000</h6>
-                  </div>
-                  <div class="col-sm-6">
-                    <p class="m-b-10 f-w-600">Cidade</p>
-                    <h6 class="text-muted f-w-400">Recife</h6>
-                </div>
-                <div class="col-sm-6">
-                  <p class="m-b-10 f-w-600">Bairro</p>
-                  <h6 class="text-muted f-w-400">Boa vista</h6>
-              </div>
-              </div>
-              <h5 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Interesses</h5>
-              <div class="row">
-                  <div class="col-sm-6">
-                      <p class="m-b-10 f-w-600">Curso</p>
-                      <h6 class="text-muted f-w-400">Sistema para internet</h6>
-                  </div>
-                  <div class="col-sm-6">
-                      <p class="m-b-10 f-w-600">Forma de ingresso?</p>
-                      <h6 class="text-muted f-w-400">Enem</h6>
-                  </div>
-                  <div class="col-sm-6">
-                    <p class="m-b-10 f-w-600">Semestre</p>
-                    <h6 class="text-muted f-w-400"></h6>
-                  </div>
-                  <div class="col-sm-6">
-                    <p class="m-b-10 f-w-600">Como nos conheceu?</p>
-                    <h6 class="text-muted f-w-400">Evento</h6>
-                  </div>
-                  <div class="col-sm-6">
-                    <p class="m-b-10 f-w-600">Termo aceito?</p>
-                    <h6 class="text-muted f-w-400">Sim</h6>
-                  </div>
-                  <div class="col-sm-6">
-                    <p class="m-b-10 f-w-600">Observação candidato</p>
-                    <h6 class="text-muted f-w-400">pode ligar qualquer horario</h6>
-                </div>
-              </div>
-              <ul class="social-link list-unstyled m-t-40 m-b-10">
-                  <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
-                  <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i class="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
-                  <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i class="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
-              </ul>
+    <!-- Modal de Edição -->
+    <div
+      class="modal fade"
+      id="modalEditar"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modalEditarLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalEditarLabel">
+              Editar Funcionário
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Fechar"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-      </div>
-  </div>
-
-<!-------- fim da referencia------------->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+          <div class="modal-body">
+            <form id="formEditarFuncionario">
+              <input type="hidden" id="funcionarioKey" />
+              <div class="form-group">
+                <label for="editNome">Nome:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editNome"
+                  name="nome"
+                />
+              </div>
+              <div class="form-group">
+                <label for="editTelefone">Telefone:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editTelefone"
+                  name="telefone"
+                />
+              </div>
+              <div class="form-group">
+                <label for="editCpf">CPF:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editCpf"
+                  name="cpf"
+                />
+              </div>
+              <div class="form-group">
+                <label for="editSenha">Senha:</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="editSenha"
+                  name="senha"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Fechar
+            </button>
+            <button type="button" class="btn btn-primary" id="salvarEdicao">
+              Salvar
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-<!---fim modal--->
 
-  <div class="container rodape">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <p class="col-md-4 mb-0 text-body-secondary">&copy; www.teamBoost.com.br</p>
-  
-      <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-      </a>
-  
-      <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><p>Suporte: Leadboost.team@gmail.com</p></a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"> <p>Contato: 81 9999-6666</p></a></li>
-      </ul>
-    </footer>
-  </div>
+    <div class="container rodape">
+      <footer
+        class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+      >
+        <p class="col-md-4 mb-0 text-body-secondary">
+          &copy; www.teamBoost.com.br
+        </p>
+        <a
+          href="/"
+          class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+        >
+          <svg class="bi me-2" width="40" height="32">
+            <use xlink:href="#bootstrap" />
+          </svg>
+        </a>
+        <ul class="nav col-md-4 justify-content-end">
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-body-secondary"
+              ><p>Suporte: Leadboost.team@gmail.com</p></a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-body-secondary"
+              ><p>Contato: 81 9999-6666</p></a
+            >
+          </li>
+        </ul>
+      </footer>
+    </div>
 
-  <script>
-    $(document).ready(function () {
-      // Função para lidar com a pesquisa
-      $(".btn-primary").click(function () {
-        var searchTerm = $(".form-control").val().toLowerCase(); // Obtemos o valor digitado e convertemos para minúsculas
-        $("table tbody tr").filter(function () {
-          // Iteramos sobre as linhas da tabela e mostramos ou ocultamos com base na pesquisa
-          $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -1);
-        });
-      });
-    });
-
-    function exportToExcel() {
-  // Obtenha os dados da tabela
-  var table = document.getElementById("example");
-  var data = [];
-
-  // Adiciona os nomes das colunas como a primeira linha
-  var headers = [];
-  $('#example thead th').each(function () {
-    // Adiciona apenas se não for a coluna "Ações"
-    if ($(this).text() !== "Ações") {
-      headers.push($(this).text());
-    }
-  });
-  data.push(headers);
-
-  // Adiciona os dados das células, excluindo as informações da coluna "Ações"
-  $('#example tbody tr').each(function () {
-    var rowData = [];
-    $(this).find('td').each(function (index) {
-      // Adiciona apenas as células que não correspondem à coluna "Ações"
-      if ($(this).index() !== $('#example th:contains("Ações")').index()) {
-        rowData.push($(this).text());
-      }
-    });
-    data.push(rowData);
-  });
-
-  // Crie uma planilha Excel
-  var ws = XLSX.utils.aoa_to_sheet(data);
-  var wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, "Planilha");
-
-  // Salve o arquivo Excel
-  XLSX.writeFile(wb, "dados_alunos.xlsx");
-}
-
-
-
-    function editRow(button) {
-      var row = $(button).closest('tr');
-      var key = row.find('td:first').text(); // Supondo que a chave (ID) está na primeira célula
-      window.location.href = '../page/editar_aluno.html?key=' + key;
-    }
-
-    function deleteRow(button) {
-      if (confirm("Tem certeza que deseja excluir este aluno?")) {
-        var row = $(button).closest('tr');
-        var key = row.find('td:first').text(); // Supondo que a chave (ID) está na primeira célula
-        
-        // Remova o aluno do Firebase usando a chave
-        firebase.database().ref('alunos/' + key).remove();
-        
-        // Remova a linha da tabela
-        row.remove();
-      }
-    }
-  </script>
-  
-
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-  <script src="../banco/firebase-config.js"></script>
-  <script src="../banco/funcionarios.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="../banco/firebase-config.js"></script>
+    <script src="../banco/funcionarios.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+  </body>
 </html>

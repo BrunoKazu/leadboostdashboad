@@ -1,126 +1,113 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var formularioRef = firebase.database().ref(''); // criar novo banco para funcionario
-    var cardsContainer = document.querySelector('#cards-funcionario');
-   
-  
-    formularioRef.on('child_added', function (snapshot) {
-      var data = snapshot.val();
-      var nome = data.nome; // Aqui pegamos o nome do aluno
-  
-      // Cria um novo elemento de cartão
-      var newCard = document.createElement('div');
-      newCard.className = 'card text-black';
-      let nomeEmCaixaAlta = nome.toUpperCase();
-  
-      // Conteúdo do cartão
-      newCard.innerHTML = `
-      <div class="card-header"><h5><i class="bi bi-person-circle"></i></h5></div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm-8">
-            <h5 class="card-title">${nomeEmCaixaAlta}</h5>
-          </div>
-          <!----botão do modal----->
-          <div class="col-sm-4 col-12 text-center mt-3 mt-md-0 "> 
-            <button type="button" class="btn btn-exibi primary-text btn-exibi-modal btn-block " data-toggle="modal" data-target="#modalExemplo">
-              Exibir
-            </button>
-          </div>
-        </div>
-      </div>
-      `;
-  
-  
-     
-  
-    //  // Adiciona o novo cartão ao contêiner de cartões
-      cardsContainer.appendChild(newCard);
-   });
-  });
-  
-    
-  
-    window.editRow = function (button) {
-      var row = button.closest('tr');
-      var cells = row.cells;
-  
-      for (var i = 0; i < cells.length - 1; i++) {
-        var cellValue = cells[i].textContent;
-        cells[i].innerHTML = `<input class="form-control" type="text" value="${cellValue}">`;
-      }
-  
-      toggleButtons(row, true);
-    };
-  
-    window.saveRow = function (button) {
-      var row = button.closest('tr');
-      var cells = row.cells;
-      var key = row.dataset.key;
-      var newData = {};
-  
-      for (var i = 0; i < cells.length - 1; i++) {
-        var fieldName = cells[i].textContent.toLowerCase().replace(/\s/g, ''); // Usar o texto da célula como nome do campo
-        var cellValue = cells[i].querySelector('input') ? cells[i].querySelector('input').value : cells[i].textContent;
-  
-        // Verificar se a chave ou o valor estão vazios
-        if (fieldName.trim() !== '' && cellValue.trim() !== '') {
-          newData[fieldName] = cellValue;
-        }
-      }
-  
-      if (Object.keys(newData).length > 0) {
-        formularioRef.child(key).update(newData, function (error) {
-          if (error) {
-            console.error("Erro ao atualizar no Firebase:", error);
-          } else {
-            console.log("Dados atualizados no Firebase com sucesso.");
-  
-            // Atualiza os dados no site
-            for (var i = 0; i < cells.length - 1; i++) {
-              var fieldName = cells[i].textContent.toLowerCase().replace(/\s/g, ''); // Usar o texto da célula como nome do campo
-              cells[i].innerHTML = newData[fieldName];
-            }
-  
-            // Volta para a exibição padrão dos botões
-            toggleButtons(row, false);
-          }
+  var formularioRef = firebase.database().ref("funcionarios");
+
+  // Evento de envio do formulário de cadastro
+  document
+    .getElementById("formCadastrarFuncionario")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var nome = document.getElementById("nomeCadastro").value;
+      var telefone = document.getElementById("telefoneCadastro").value;
+      var cpf = document.getElementById("cpfCadastro").value;
+      var senha = document.getElementById("senhaCadastro").value;
+
+      var novoFuncionarioRef = formularioRef.push();
+      novoFuncionarioRef
+        .set({
+          nome: nome,
+          telefone: telefone,
+          cpf: cpf,
+          senha: senha,
+        })
+        .then(function () {
+          alert("Funcionário cadastrado com sucesso!");
+          document.getElementById("formCadastrarFuncionario").reset();
+        })
+        .catch(function (error) {
+          console.error("Erro ao cadastrar funcionário:", error);
         });
-      } else {
-        console.log("Chave ou valor vazio. Não foi possível atualizar no Firebase.");
-      }
-    };
-  
-    window.cancelEdit = function (button) {
-      // Atualiza a página para evitar inconsistências
-      location.reload();
-    };
-  
-    window.deleteRow = function (button) {
-      if (confirm("Tem certeza que deseja excluir este aluno?")) {
-        var row = button.closest('tr');
-        var key = row.dataset.key;
-        formularioRef.child(key).remove();
-        row.remove();
-      }
-    };
-  
-    function toggleButtons(row, isEditing) {
-      var editButton = row.querySelector('.btn-edit');
-      var saveButton = row.querySelector('.btn-save');
-      var cancelButton = row.querySelector('.btn-cancel');
-      var deleteButton = row.querySelector('.btn-delete');
-  
-      editButton.style.display = isEditing ? 'none' : 'inline-block';
-      saveButton.style.display = isEditing ? 'inline-block' : 'none';
-      cancelButton.style.display = isEditing ? 'inline-block' : 'none';
-      deleteButton.style.display = isEditing ? 'none' : 'inline-block';
+    });
+
+  // Função para listar funcionários na tabela
+  formularioRef.on("child_added", function (snapshot) {
+    var data = snapshot.val();
+    var key = snapshot.key;
+
+    var tableBody = document.querySelector("#example tbody");
+    var row = document.createElement("tr");
+    row.setAttribute("data-key", key);
+
+    row.innerHTML = `
+          <td>${data.nome}</td>
+          <td>${data.telefone}</td>
+          <td>${data.cpf}</td>
+          <td>${data.senha}</td>
+          <td>
+              <button type="button" class="btn btn-primary btn-sm" onclick="editRow('${key}')">Editar</button>
+              <button type="button" class="btn btn-danger btn-sm" onclick="deleteRow('${key}')">Excluir</button>
+          </td>
+      `;
+
+    tableBody.appendChild(row);
+  });
+
+  // Função para excluir funcionário
+  window.deleteRow = function (key) {
+    if (confirm("Tem certeza que deseja excluir este funcionário?")) {
+      var row = document.querySelector(`tr[data-key="${key}"]`);
+
+      formularioRef
+        .child(key)
+        .remove()
+        .then(function () {
+          row.remove();
+        })
+        .catch(function (error) {
+          console.error("Erro ao excluir funcionário:", error);
+        });
     }
-  ;
-  
-  
-  
-  
-  
-  
-  
-  
+  };
+
+  // Função para editar funcionário
+  window.editRow = function (key) {
+    var row = document.querySelector(`tr[data-key="${key}"]`);
+    var cells = row.cells;
+
+    document.getElementById("funcionarioKey").value = key;
+    document.getElementById("editNome").value = cells[0].innerText;
+    document.getElementById("editTelefone").value = cells[1].innerText;
+    document.getElementById("editCpf").value = cells[2].innerText;
+    document.getElementById("editSenha").value = cells[3].innerText;
+
+    $("#modalEditar").modal("show");
+  };
+
+  // Evento para salvar edição
+  document
+    .getElementById("salvarEdicao")
+    .addEventListener("click", function () {
+      var key = document.getElementById("funcionarioKey").value;
+      var nome = document.getElementById("editNome").value;
+      var telefone = document.getElementById("editTelefone").value;
+      var cpf = document.getElementById("editCpf").value;
+      var senha = document.getElementById("editSenha").value;
+
+      formularioRef
+        .child(key)
+        .update({
+          nome: nome,
+          telefone: telefone,
+          cpf: cpf,
+          senha: senha,
+        })
+        .then(function () {
+          alert("Funcionário atualizado com sucesso!");
+          $("#modalEditar").modal("hide");
+          location.reload();
+        })
+        .catch(function (error) {
+          console.error("Erro ao atualizar funcionário:", error);
+        });
+    });
+});
