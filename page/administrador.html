@@ -70,8 +70,6 @@
                             <div class="col-md-12"><label class="labels">Endereço Linha 1</label><input type="text" id="linhaEndereco1" class="form-control"></div>
                             <div class="col-md-12"><label class="labels">Endereço Linha 2</label><input type="text" id="linhaEndereco2" class="form-control"></div>
                             <div class="col-md-12"><label class="labels">Código Postal</label><input type="text" id="codigoPostal" class="form-control"></div>
-                            <div class="col-md-12"><label class="labels">Estado</label><input type="text" id="estado" class="form-control"></div>
-                            <div class="col-md-12"><label class="labels">Área</label><input type="text" id="area" class="form-control"></div>
                             <div class="col-md-12"><label class="labels">E-mail</label><input type="text" id="email" class="form-control"></div>
                             <div class="col-md-12"><label class="labels">Educação</label><input type="text" id="educacao" class="form-control"></div>
                         </div>
@@ -110,8 +108,6 @@
             document.getElementById('linhaEndereco1').value = perfil.addressLine1;
             document.getElementById('linhaEndereco2').value = perfil.addressLine2;
             document.getElementById('codigoPostal').value = perfil.postcode;
-            document.getElementById('estado').value = perfil.state;
-            document.getElementById('area').value = perfil.area;
             document.getElementById('email').value = perfil.email;
             document.getElementById('educacao').value = perfil.education;
             document.getElementById('pais').value = perfil.country;
@@ -126,8 +122,6 @@
         addressLine1: document.getElementById('linhaEndereco1').value,
         addressLine2: document.getElementById('linhaEndereco2').value,
         postcode: document.getElementById('codigoPostal').value,
-        state: document.getElementById('estado').value,
-        area: document.getElementById('area').value,
         email: document.getElementById('email').value,
         education: document.getElementById('educacao').value,
         country: document.getElementById('pais').value,
