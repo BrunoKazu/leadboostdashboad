@@ -4,7 +4,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   formularioRef.on("child_added", function (snapshot) {
     var data = snapshot.val();
-    var nome = data.nome; // Aqui pegamos o nome do candidato
+    var nome = data.nome;
+    // Verifique se todos os campos existem e são válidos
+    var email = data.email || "";
+    var telefone = data.telefone || "";
+    var cidade = data.cidade || "";
+    var bairro = data.bairro || "";
+    var curso = data.curso || "";
+    var ingresso = data.ingresso || "";
+    var semestre = data.semestre || "";
+    var conheceu = data.conheceu || "";
+    var termo = data.customCheck1 || "";
+    var observacao = data.Observacoes || "";
 
     // Cria um novo elemento de cartão
     var newCard = document.createElement("div");
@@ -23,11 +34,11 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="col-sm-4 col-12 text-center mt-3 mt-md-0 "> 
             <button type="button" class="btn btn-exibir primary-text btn-exibir-modal btn-block" 
                     data-toggle="modal" data-target="#modalExemplo"
-                    data-nome="${nome}" data-email="${data.email}" data-telefone="${data.telefone}" 
-                    data-cidade="${data.cidade}" data-bairro="${data.bairro}" 
-                    data-curso="${data.curso}" data-ingresso="${data.ingresso}" 
-                    data-semestre="${data.semestre}" data-conheceu="${data.conheceu}" 
-                    data-termo="${data.customCheck1}" data-observacao="${data.Observacoes}">
+                    data-nome="${nome}" data-email="${email}" data-telefone="${telefone}" 
+                    data-cidade="${cidade}" data-bairro="${bairro}" 
+                    data-curso="${curso}" data-ingresso="${ingresso}" 
+                    data-semestre="${semestre}" data-conheceu="${conheceu}" 
+                    data-termo="${termo}" data-observacao="${observacao}">
               Exibir 
             </button>
           </div>
@@ -52,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var modalIngresso = document.querySelector("#ingresso");
       var modalSemestre = document.querySelector("#semestre");
       var modalConheceu = document.querySelector("#evento");
-      var modalcustomCheck1 = document.querySelector("#customCheck1");
+      var modalCustomCheck1 = document.querySelector("#customCheck1");
       var modalObservacoes = document.querySelector("#Observacoes");
 
       modalNome.textContent = event.target.dataset.nome;
@@ -64,30 +75,29 @@ document.addEventListener("DOMContentLoaded", function () {
       modalIngresso.textContent = event.target.dataset.ingresso;
       modalSemestre.textContent = event.target.dataset.semestre;
       modalConheceu.textContent = event.target.dataset.conheceu;
-      modalcustomCheck1.textContent = event.target.dataset.customCheck1;
-      modalObservacoes.textContent = event.target.dataset.observacoes;
+      modalCustomCheck1.textContent = event.target.dataset.termo;
+      modalObservacoes.textContent = event.target.dataset.observacao;
     }
   });
 });
 
 function exportToExcel() {
-  var cardsData = []; // Array para armazenar os dados dos cards
-
+  var cardsData = [];
   // Iterar sobre os cards visíveis e coletar seus dados
   var cards = document.querySelectorAll(".card");
   cards.forEach(function (card) {
     var cardData = {
       nome: card.querySelector(".card-title").textContent.trim(),
-      email: card.dataset.email.trim(),
-      telefone: card.dataset.telefone.trim(),
-      cidade: card.dataset.cidade.trim(),
-      bairro: card.dataset.bairro.trim(),
-      curso: card.dataset.curso.trim(),
-      ingresso: card.dataset.ingresso.trim(),
-      semestre: card.dataset.semestre.trim(),
-      conheceu: card.dataset.conheceu.trim(),
-      customCheck1: card.dataset.customCheck1.trim(),
-      Observacoes: card.dataset.observacoes.trim(),
+      email: card.querySelector(".btn-exibir-modal").dataset.email,
+      telefone: card.querySelector(".btn-exibir-modal").dataset.telefone,
+      cidade: card.querySelector(".btn-exibir-modal").dataset.cidade,
+      bairro: card.querySelector(".btn-exibir-modal").dataset.bairro,
+      curso: card.querySelector(".btn-exibir-modal").dataset.curso,
+      ingresso: card.querySelector(".btn-exibir-modal").dataset.ingresso,
+      semestre: card.querySelector(".btn-exibir-modal").dataset.semestre,
+      conheceu: card.querySelector(".btn-exibir-modal").dataset.conheceu,
+      customCheck1: card.querySelector(".btn-exibir-modal").dataset.termo,
+      Observacoes: card.querySelector(".btn-exibir-modal").dataset.observacao,
     };
     cardsData.push(cardData);
   });
@@ -96,8 +106,10 @@ function exportToExcel() {
   var data = [];
 
   // Adicione os nomes das colunas como a primeira linha
-  var headers = Object.keys(cardsData[0]);
-  data.push(headers);
+  if (cardsData.length > 0) {
+    var headers = Object.keys(cardsData[0]);
+    data.push(headers);
+  }
 
   // Adicione os dados dos cards à matriz de dados
   cardsData.forEach(function (cardData) {
@@ -156,6 +168,7 @@ function salvar() {
   // Após salvar, chame a função cancelar() para voltar ao modo de visualização
   cancelar();
 }
+
 document
   .querySelector(".btn-salvar-mudancas")
   .addEventListener("click", function () {
