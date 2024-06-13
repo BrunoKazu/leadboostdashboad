@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
   var formularioRef = firebase.database().ref("formulario");
   var cardsContainer = document.querySelector("#cards-container");
+  var currentEditId = null;
 
   formularioRef.on("child_added", function (snapshot) {
     var data = snapshot.val();
-    var nome = data.nome;
-    // Verifique se todos os campos existem e são válidos
+    var id = snapshot.key;
+    var nome = data.nome || "";
     var email = data.email || "";
     var telefone = data.telefone || "";
     var cidade = data.cidade || "";
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="col-sm-4 col-12 text-center mt-3 mt-md-0 "> 
             <button type="button" class="btn btn-exibir primary-text btn-exibir-modal btn-block" 
                     data-toggle="modal" data-target="#modalExemplo"
-                    data-nome="${nome}" data-email="${email}" data-telefone="${telefone}" 
+                    data-id="${id}" data-nome="${nome}" data-email="${email}" data-telefone="${telefone}" 
                     data-cidade="${cidade}" data-bairro="${bairro}" 
                     data-curso="${curso}" data-ingresso="${ingresso}" 
                     data-semestre="${semestre}" data-conheceu="${conheceu}" 
@@ -54,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("click", function (event) {
     if (event.target.classList.contains("btn-exibir-modal")) {
       // Preenche o modal com as informações do candidato
+      currentEditId = event.target.dataset.id;
       var modalNome = document.querySelector("#nome");
       var modalEmail = document.querySelector("#email");
       var modalTelefone = document.querySelector("#telefone");
@@ -144,7 +146,7 @@ function editar() {
 }
 
 // Função para cancelar a edição
-function cancelar() {
+function btn_cancelar() {
   $(".modal-body")
     .find("input")
     .each(function () {
@@ -155,18 +157,43 @@ function cancelar() {
   $(".btn-editar").show();
 }
 
-document
-  .querySelector(".btn-salvar-mudancas")
-  .addEventListener("click", function () {
-    salvar(); // Chama a função salvar() ao clicar no botão
-  });
+// Função para salvar os dados atualizados no banco de dados Firebase
+function salvarDados() {
+  var dadosASalvar = {
+    nome: document.querySelector("#nome").value,
+    email: document.querySelector("#email").value,
+    telefone: document.querySelector("#telefone").value,
+    cidade: document.querySelector("#cidade").value,
+    bairro: document.querySelector("#bairro").value,
+    curso: document.querySelector("#curso").value,
+    ingresso: document.querySelector("#ingresso").value,
+    semestre: document.querySelector("#semestre").value,
+    conheceu: document.querySelector("#evento").value,
+    customCheck1: document.querySelector("#customCheck1").checked, // Se for um checkbox
+    Observacoes: document.querySelector("#Observacoes").value,
+  };
 
-// Função para salvar as alterações
-function salvar() {
-  // Lógica para salvar as alterações no banco de dados
-  // ...
-  // Após salvar, chame a função cancelar() para voltar ao modo de visualização
-  cancelar();
+  // Verifica se há um ID de edição atual
+  if (currentEditId) {
+    var updateRef = firebase.database().ref("formulario/" + currentEditId);
+
+    // Atualiza os dados no Firebase
+    updateRef
+      .update(dadosASalvar)
+      .then(function () {
+        console.log("Dados atualizados com sucesso!");
+        // Exibe o modal de alerta
+        $("#modalAlerta").modal("show");
+      })
+      .catch(function (error) {
+        console.error("Erro ao atualizar dados:", error);
+      });
+  } else {
+    console.error("ID do registro não encontrado.");
+  }
+
+  // Fecha o modal de edição
+  $("#modalExemplo").modal("hide");
 }
 
 document
@@ -175,36 +202,16 @@ document
     salvarDados(); // Chama a função salvarDados() ao clicar no botão "Salvar mudanças"
   });
 
-// Função para salvar os dados atualizados no banco de dados Firebase
-function salvarDados() {
-  var dadosASalvar = {
-    nome: document.querySelector("#nome").textContent,
-    email: document.querySelector("#email").textContent,
-    telefone: document.querySelector("#telefone").textContent,
-    cidade: document.querySelector("#cidade").textContent,
-    bairro: document.querySelector("#bairro").textContent,
-    curso: document.querySelector("#curso").textContent,
-    ingresso: document.querySelector("#ingresso").textContent,
-    semestre: document.querySelector("#semestre").textContent,
-    conheceu: document.querySelector("#evento").textContent,
-    customCheck1: document.querySelector("#customCheck1").textContent,
-    Observacoes: document.querySelector("#Observacoes").textContent,
-  };
+document
+  .querySelector(".btn-salvar-mudancas")
+  .addEventListener("click", function () {
+    btn_salvar(); // Chama a função salvar() ao clicar no botão
+  });
 
-  // Aqui você pode salvar os dados atualizados no banco de dados Firebase
-  formularioRef
-    .push(dadosASalvar)
-    .then(function () {
-      // Caso a operação de salvamento seja bem-sucedida
-      console.log("Dados salvos com sucesso!");
-      // Aqui você pode adicionar qualquer código adicional que deseja executar após o salvamento bem-sucedido
-    })
-    .catch(function (error) {
-      // Caso ocorra um erro ao salvar os dados
-      console.error("Erro ao salvar dados:", error);
-      // Aqui você pode tratar o erro ou fornecer feedback ao usuário, se desejar
-    });
+// Função para salvar as alterações
+function btn_salvar() {
+  // Chama a função para salvar os dados no Firebase ou em outro sistema
 
-  // Após salvar os dados, você pode ocultar o modal se desejar
-  $("#modalExemplo").modal("hide");
+  // Após salvar, chame a função cancelar() para voltar ao modo de visualização
+  btn_cancelar();
 }
